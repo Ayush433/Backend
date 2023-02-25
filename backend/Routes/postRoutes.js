@@ -28,7 +28,7 @@ const noAllow = (req, res) =>
     message: "method not allowed",
   });
 
-router.get("/", postcontroller.getAllPost);
+router.get("/", postcontroller.getAllPosts);
 
 router
   .route("/api/createPost")

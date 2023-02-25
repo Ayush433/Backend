@@ -11,10 +11,9 @@ const Profile = () => {
   const { user } = useSelector((store) => store.user);
 
   const nav = useNavigate();
-  const token = user?.token || "";
 
-  const { isError, isLoading, error, data } = useGetBlogByUserQuery(token);
-  const [removePost, { Loading, iserror }] = useRemoveBlogsMutation();
+  const { isError, isLoading, error, data } = useGetBlogByUserQuery(user.token);
+  const [removePost, { Loading, iserror }] = useRemoveBlogsMutation(user.token);
   if (isLoading) {
     return (
       <div className="h-[600px]">
@@ -27,8 +26,8 @@ const Profile = () => {
       </div>
     );
   }
-  const remove = async ({post_id, public_id}) => {
-    console.log(post_id, public_id)
+  const remove = async ({ post_id, public_id }) => {
+    console.log(post_id, public_id);
     try {
       const response = await removePost({ post_id, public_id, token }).unwrap();
       toast.success("successfully remove");
@@ -37,7 +36,6 @@ const Profile = () => {
     }
   };
 
-  console.log(data);
   return (
     <div>
       <div className="grid grid-cols-1 p-5 gap-3 md:grid-cols-2 lg:grid-cols-3">
@@ -63,7 +61,11 @@ const Profile = () => {
                     {" "}
                     <i className="fa-solid fa-pen-to-square fa-xl dark:text-white dark:hover:text-blue-500"></i>
                   </button>
-                  <button onClick={() => remove({post_id : post._id, public_id: post.public_Id})}>
+                  <button
+                    onClick={() =>
+                      remove({ post_id: post._id, public_id: post.public_Id })
+                    }
+                  >
                     {" "}
                     <i className="fa-solid fa-trash fa-xl dark:text-red-600 hover:dark:text-red-600"></i>
                   </button>

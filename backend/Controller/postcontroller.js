@@ -15,7 +15,7 @@ const post = [
   },
 ];
 
-module.exports.getAllPost = async (req, res) => {
+module.exports.getAllPosts = async (req, res) => {
   try {
     const response = await Post.find().sort({ createdAt: -1 });
     return res.status(200).json(response);
@@ -38,11 +38,7 @@ module.exports.getPostByUser = async (req, res) => {
     });
   }
 };
-// cloudinary.config({
-//   api_key: "812785993884176",
-//   api_secret: "zTUxCL1yJ-XxuAczyy5pEHuWcqw",
-//   cloud_name: "dozx6bl1g",
-// });
+
 module.exports.UpdatePost = async (req, res) => {
   const { title, detail, post_id, public_id } = req.body;
 
@@ -51,7 +47,7 @@ module.exports.UpdatePost = async (req, res) => {
       if (req.files?.image && public_id) {
         const file = req.files.image;
         const fileName = path.extname(file.name);
-        const extensions = [".png", ".jpg", ".jpeg", ".CR3", ".JPG"];
+        const extensions = [".png", ".jpg", ".jpeg"];
 
         if (!extensions.includes(fileName)) {
           return res.status(400).json({
@@ -64,7 +60,6 @@ module.exports.UpdatePost = async (req, res) => {
           api_secret: "zTUxCL1yJ-XxuAczyy5pEHuWcqw",
           cloud_name: "dozx6bl1g",
         });
-
         cloudinary.uploader.destroy(public_id);
 
         file.mv(`./uploads/${file.name}`, (err) => {

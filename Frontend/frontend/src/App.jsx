@@ -24,7 +24,7 @@ function App() {
   return (
     <div className="App main-wrapper bg-[#f1f2f6] dark:bg-[#0f172A]">
       <Header />
-      <ToastContainer autoClose={2000} position="top-right" />
+      <ToastContainer autoClose={1000} position="top-right" />
       <Routes>
         <Route path="/" element={<Home />} />
         <Route element={<RequireAuth />}>

@@ -6,7 +6,7 @@ const RequireAuth = () => {
   const location = useLocation();
   const { user } = useSelector((store) => store.user);
   console.log(user);
-  return user === null ? <Navigate to="/user/login" replace /> : <Outlet />;
+  return user === null ? <Navigate to="/" replace /> : <Outlet />;
 };
 
 export default RequireAuth;
