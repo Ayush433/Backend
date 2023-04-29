@@ -1,6 +1,6 @@
 import React from "react";
 import { useEffect } from "react";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { clearUser } from "../Features/Auth/userSlice";
@@ -131,7 +131,7 @@ const Header = () => {
                       </div>
                     ) : (
                       <div className="icon" onClick={handleTheme}>
-                        <i class="fa-solid fa-moon  dark:text-white"></i>
+                        <i class=" fa-solid fa-moon   dark:text-white"></i>
                       </div>
                     )}
                   </div>

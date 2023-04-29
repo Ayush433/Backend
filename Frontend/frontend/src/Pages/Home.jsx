@@ -21,7 +21,7 @@ const Home = () => {
   }
 
   return (
-    <div className="grid grid-cols-1 p-5 gap-3 md:grid-cols-2 lg:grid-cols-3">
+    <div className="grid grid-cols-1 p-5 gap-3 md:grid-cols-2  lg:grid-cols-3 ">
       {data &&
         data.map((post) => {
           return (
@@ -49,5 +49,6 @@ const Home = () => {
     </div>
   );
 };
+// lg:pl-[400px] lg:pr-[400px]
 
 export default Home;

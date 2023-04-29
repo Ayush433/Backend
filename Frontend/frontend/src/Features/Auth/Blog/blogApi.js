@@ -55,14 +55,13 @@ export const blogApi = createApi({
       query: (val) => ({
         url: "/api/post/remove",
         // body: val.blog,
-        params : {
-          post_id : val.post_id,
-          public_id : val.public_id
+        params: {
+          post_id: val.post_id,
+          public_id: val.public_id,
         },
         method: "DELETE",
         headers: {
           Authorization: val.token,
-          
         },
       }),
       invalidatesTags: ["Blog"],

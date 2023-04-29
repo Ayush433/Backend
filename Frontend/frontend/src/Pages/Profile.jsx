@@ -11,9 +11,9 @@ const Profile = () => {
   const { user } = useSelector((store) => store.user);
 
   const nav = useNavigate();
-
+  const token = user?.token || "";
   const { isError, isLoading, error, data } = useGetBlogByUserQuery(user.token);
-  const [removePost, { Loading, iserror }] = useRemoveBlogsMutation(user.token);
+  const [removePost, { Loading, iserror }] = useRemoveBlogsMutation();
   if (isLoading) {
     return (
       <div className="h-[600px]">

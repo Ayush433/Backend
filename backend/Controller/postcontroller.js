@@ -5,6 +5,11 @@ const cloudinary = require("cloudinary").v2;
 const fs = require("fs");
 const { isValidObjectId } = require("mongoose");
 const { response } = require("express");
+cloudinary.config({
+  api_key: "812785993884176",
+  api_secret: "zTUxCL1yJ-XxuAczyy5pEHuWcqw",
+  cloud_name: "dozx6bl1g",
+});
 
 const post = [
   {
@@ -113,7 +118,7 @@ module.exports.UpdatePost = async (req, res) => {
       });
     }
   } catch (err) {
-    console.log(err)
+    console.log(err);
     return res.status(400).json({
       status: 400,
       message: err,
@@ -121,11 +126,6 @@ module.exports.UpdatePost = async (req, res) => {
   }
 };
 
-// cloudinary.config({
-//   api_key: "812785993884176",
-//   api_secret: "zTUxCL1yJ-XxuAczyy5pEHuWcqw",
-//   cloud_name: "dozx6bl1g",
-// });
 module.exports.createPost = async (req, res) => {
   const userId = req.userId;
   if (!req.userId) {
@@ -212,8 +212,8 @@ module.exports.removePost = async (req, res) => {
       cloud_name: "dozx6bl1g",
     });
     if (isValidObjectId(post_id)) {
-        await Post.findByIdAndDelete({ _id: post_id });
-        return res.status(200).json("Successfully Remove");
+      await Post.findByIdAndDelete({ _id: post_id });
+      return res.status(200).json("Successfully Remove");
     } else {
       return res.status(400).json({
         status: 400,
